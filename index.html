@@ -4,6 +4,13 @@
 
   <!-- Primary Meta Tags -->
 <title>Khalid Hossain | Digital Expert & Web Developer | 8+ Years Experience</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="https://i.postimg.cc/sgwhhF2g/Photo.png" type="image/png">
+  
+  <!-- Continue with existing CSS links -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  
 <meta name="description" content="Professional Social Media Strategist & Web Developer from Bangladesh. 2000+ projects completed for 500+ clients worldwide. Specializing in social media management, SEO, and web development.">
 <meta name="keywords" content="web developer, social media expert, Bangladesh freelancer, SEO specialist, content creator">
 <meta name="author" content="Khalid Hossain">
@@ -476,21 +483,35 @@
       <h2 class="text-4xl font-bold text-center mb-16 section-title">GET IN TOUCH</h2>
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
         <div>
-          <form class="space-y-6">
-            <div>
-              <label for="name" class="block text-gray-700 mb-2">Your Name</label>
-              <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-            </div>
-            <div>
-              <label for="email" class="block text-gray-700 mb-2">Email Address</label>
-              <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
-            </div>
-            <div>
-              <label for="message" class="block text-gray-700 mb-2">Your Message</label>
-              <textarea id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
-            </div>
-            <button type="submit" class="btn-primary text-white px-8 py-3 rounded-full font-medium w-full">SEND MESSAGE</button>
-          </form>
+          <!-- Contact From Starts -->
+          <form action="https://formsubmit.co/khalidrumonwork@gmail.com" method="POST" class="space-y-6">
+  <!-- FormSubmit Configuration -->
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="https://khalidrumon.github.io/#contact">
+  
+  <!-- Form Fields -->
+  <div>
+    <label for="name" class="block text-gray-700 mb-2">Your Name *</label>
+    <input type="text" name="name" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" required>
+  </div>
+  <div>
+    <label for="email" class="block text-gray-700 mb-2">Email Address *</label>
+    <input type="email" name="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" required>
+  </div>
+  <div>
+    <label for="message" class="block text-gray-700 mb-2">Your Message *</label>
+    <textarea name="message" id="message" rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" required></textarea>
+  </div>
+  <button type="submit" class="btn-primary text-white px-8 py-3 rounded-full font-medium w-full hover:bg-blue-700 transition">SEND MESSAGE</button>
+</form>
+
+<!-- Success Message (Hidden by Default) -->
+<div id="form-success" class="hidden text-center py-4 px-6 bg-green-100 text-green-800 rounded-lg mt-4">
+  <i class="fas fa-check-circle mr-2"></i> Thank you! Your message has been sent.
+</div>
+          <!-- Contact From Ends-->
+          
         </div>
         <div class="flex flex-col justify-between">
           <div>
@@ -590,5 +611,29 @@
       if (e.target === this) hideModal();
     });
   </script>
+
+  <script>
+  // Handle form submission
+  document.querySelector('form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form)
+    })
+    .then(() => {
+      // Show success message
+      document.getElementById('form-success').classList.remove('hidden');
+      form.reset();
+      
+      // Scroll to success message
+      document.getElementById('form-success').scrollIntoView({
+        behavior: 'smooth'
+      });
+    })
+    .catch(() => alert('Error sending message'));
+  });
+</script>
 </body>
 </html>
